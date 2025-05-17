@@ -1,0 +1,46 @@
+{
+  "name": "image-splitter",
+  "version": "1.0.0",
+  "main": "electron/main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "electron electron/main.js",
+    "electron:dev": "ELECTRON_START_URL=http://localhost:8080 electron electron/main.js",
+    "electron:build": "npm run build --prefix frontend && electron electron/main.js",
+    "postinstall": "electron-builder install-app-deps",
+    "build": "npm run build --prefix frontend && electron-builder --mac"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/max60213/Image-Splitter.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/max60213/Image-Splitter/issues"
+  },
+  "homepage": "https://github.com/max60213/Image-Splitter#readme",
+  "description": "A desktop application to split images into rows and columns",
+  "devDependencies": {
+    "electron": "^36.2.1",
+    "electron-builder": "^24.13.3"
+  },
+  "build": {
+    "appId": "com.maxlin.imagesplitter",
+    "productName": "Image Splitter",
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "electron/**/*",
+      "frontend/dist/**/*",
+      "node_modules/**/*"
+    ],
+    "mac": {
+      "category": "public.app-category.graphics-design",
+      "target": ["dmg"],
+      "icon": "build/icon.icns"
+    }
+  }
+}
